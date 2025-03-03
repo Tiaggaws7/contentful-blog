@@ -1,0 +1,33 @@
+// src/app/api/revalidate/route.ts
+import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
+
+export async function POST(request: NextRequest) {
+  try {
+    const requestBody = await request.json();
+    const { secret, entryId } = requestBody;
+    
+    // Verify the secret to ensure the request is coming from Contentful
+    if (secret !== process.env.CONTENTFUL_WEBHOOK_SECRET) {
+      return NextResponse.json(
+        { message: 'Invalid secret' },
+        { status: 401 }
+      );
+    }
+    
+    // Revalidate the specific post if id is provided
+    if (entryId) {
+      revalidatePath(`/blog/${entryId}`);
+    }
+    
+    // Always revalidate the blog index
+    revalidatePath('/blog');
+    
+    return NextResponse.json({ revalidated: true });
+  } catch (error) {
+    return NextResponse.json(
+      { message: 'Error revalidating' },
+      { status: 500 }
+    );
+  }
+}
