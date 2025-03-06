@@ -1,5 +1,4 @@
 // src/app/blog/[id]/page.tsx
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
@@ -21,7 +20,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }): Promise<Metadata> {
   // Await params before accessing its properties
   const { id } = await params;
@@ -47,7 +46,7 @@ export async function generateMetadata({
 export default async function ArticlePage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
   // Await params before accessing its properties
   const { id } = await params;
