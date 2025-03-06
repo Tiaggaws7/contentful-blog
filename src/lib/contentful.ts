@@ -1,7 +1,6 @@
 // src/lib/contentful.ts
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createClient } from 'contentful';
-import { Document } from '@contentful/rich-text-types';
 
 export const contentfulClient = createClient({
   space: process.env.CONTENTFUL_SPACE_ID!,
