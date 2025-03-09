@@ -2,6 +2,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createClient } from 'contentful';
 
+
+// Add environment validation at the top
+if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
+  throw new Error(`
+    Missing Contentful environment variables!
+    Verify these are set in your .env file and deployment:
+    - CONTENTFUL_SPACE_ID
+    - CONTENTFUL_ACCESS_TOKEN
+  `);
+}
+
+
 export const contentfulClient = createClient({
   space: process.env.CONTENTFUL_SPACE_ID!,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN!,
