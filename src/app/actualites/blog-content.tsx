@@ -44,7 +44,7 @@ export default function BlogContent({ initialArticles }: BlogContentProps) {
     <article className="bg-white border border-blue-600 rounded-lg p-6 transition-shadow duration-300 hover:shadow-md">
       <h2 className="text-2xl font-serif font-semibold mb-2">
         <Link
-          href={`/blog/${article.id}`}
+          href={`/actualites/${article.id}`}
           className="text-gray-800 hover:text-blue-600 transition-colors"
         >
           {article.title}
@@ -56,7 +56,7 @@ export default function BlogContent({ initialArticles }: BlogContentProps) {
           Par {article.author} | {article.date}
         </span>
         <Link
-          href={`/blog/${article.id}`}
+          href={`/actualites/${article.id}`}
           className="text-blue-600 hover:text-blue-800 transition-colors font-semibold"
         >
           Lire la suite →

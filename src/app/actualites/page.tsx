@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   keywords: 'actualités immobilières, marché immobilier Guadeloupe, conseils immobilier, achat, vente',
   authors: [{ name: 'Elise Buil' }],
   alternates: {
-    canonical: 'https://elisebuilimmobilierguadeloupe.com/Blog',
+    canonical: 'https://elisebuilimmobilierguadeloupe.com/blog/actualites',
   },
 };
 
