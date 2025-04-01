@@ -24,10 +24,7 @@ export default function RootLayout({
                 <Link href="/" className="text-xl font-bold">Elise Buil Immobilier</Link>
               </div>
               <nav className="ml-6 flex items-center space-x-4">
-                <Link href="/" className="px-3 py-2 rounded-md text-sm font-medium text-gray-900 hover:bg-gray-100">
-                  Accueil
-                </Link>
-                <Link href="/blog" className="px-3 py-2 rounded-md text-sm font-medium text-gray-900 hover:bg-gray-100">
+                <Link href="/actualites" className="px-3 py-2 rounded-md text-sm font-medium text-gray-900 hover:bg-gray-100">
                   Actualités
                 </Link>
               </nav>
