@@ -17,11 +17,11 @@ export async function POST(request: NextRequest) {
     
     // Revalidate the specific post if id is provided
     if (entryId) {
-      revalidatePath(`/blog/${entryId}`);
+      revalidatePath(`/actualites/${entryId}`);
     }
     
     // Always revalidate the blog index
-    revalidatePath('/blog');
+    revalidatePath('/actualites');
     
     return NextResponse.json({ revalidated: true });
   } catch (error) {
