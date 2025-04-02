@@ -1,4 +1,4 @@
-// src/app/actualites/[id]/page.tsx
+// src/app/[id]/page.tsx
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
 import { Metadata } from 'next';
@@ -39,7 +39,7 @@ export async function generateMetadata({
     description: article.excerpt,
     authors: [{ name: article.author }],
     alternates: {
-      canonical: `https://elisebuilimmobilierguadeloupe.com/blog/actualites/${id}`,
+      canonical: `https://blog.elisebuilimmobilierguadeloupe.com/${id}`,
     },
   };
 }
@@ -96,7 +96,7 @@ export default async function ArticlePage({
             {documentToReactComponents(article.content, richTextOptions)}
           </div>
           <Link
-            href="/actualites"
+            href="/"
             className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors"
           >
             ← Retour à tous les articles
