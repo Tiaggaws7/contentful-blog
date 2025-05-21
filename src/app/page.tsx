@@ -14,11 +14,24 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function BlogPage({ searchParams }: { searchParams: { category?: string } }) {
-  const category = searchParams.category || "General"; // Default to "General"
+// Update the component props to match Next.js App Router expectations
+export default async function BlogPage(props: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  // Await the searchParams before accessing its properties
+  const searchParams = await props.searchParams;
+  
+  // Extract category safely, handling both string and array cases
+  const categoryParam = searchParams.category;
+  const category = typeof categoryParam === 'string' 
+    ? categoryParam 
+    : Array.isArray(categoryParam) 
+      ? categoryParam[0] 
+      : "General"; // Default to "General"
+  
   const allArticles = await getArticles();
 
-  // Filter articles **on the server** before passing to BlogContent
+  // Filter articles based on category
   const filteredArticles = category === "General"
     ? allArticles
     : allArticles.filter((article) => article.category === category);
